@@ -1,0 +1,41 @@
+<header>
+  text-align: center;
+  padding: 20px;
+</header>
+
+<nav ul>
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+</nav>
+
+<nav li>
+  display: inline-block;
+  margin-right: 10px;
+</nav>
+
+<nav li a>
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+</nav>
+
+<main>
+  padding: 20px;
+</main>
+
+<div class="card">
+  display: inline-block;
+  width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+</div>
+
+<footer>
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+</footer>

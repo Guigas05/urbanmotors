@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>URBAN MOTORS | Urbano e Moderno</title>
+</head>
+<style>
+    body {
+        background-color: rgb(251, 251, 251);
+    }
+
+    a {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+    }
+
+    li {
+        font-family: 'Poppins', sans-serif;
+        color: gray;
+    }
+
+    .card-img-top {
+        border-radius: 20px;
+        padding: 10px;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    }
+
+    .btn-warning {
+        background-color: rgb(254, 132, 0);
+    }
+
+    .whatsapp-share-button {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        background-size: 100% 100%;
+        /* ou 'contain' */
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI2MHB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA2MCA2MCIgd2lkdGg9IjYwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZXNjLz48ZGVmcy8+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBpZD0ic29pY2FsIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSI+PGcgaWQ9InNvY2lhbCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTk3My4wMDAwMDAsIC01MzguMDAwMDAwKSI+PGcgaWQ9InNsaWNlcyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTczLjAwMDAwMCwgMTM4LjAwMDAwMCkiLz48ZyBmaWxsPSIjNTdCQTYzIiBpZD0ic3F1YXJlLWZsYXQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3My4wMDAwMDAsIDEzOC4wMDAwMDApIj48cGF0aCBkPSJNODAyLjk5NTkzNyw0MDAgTDg1Ny4wMDQwNjMsNDAwIEM4NTguNjU4NjczLDQwMCA4NjAsNDAxLjMzNzMxIDg2MCw0MDIuOTk1OTM3IEw4NjAsNDU3LjAwNDA2MyBDODYwLDQ1OC42NTg2NzMgODU4LjY2MjY5LDQ2MCA4NTcuMDA0MDYzLDQ2MCBMODAyLjk5NTkzNyw0NjAgQzgwMS4zNDEzMjcsNDYwIDgwMCw0NTguNjYyNjkgODAwLDQ1Ny4wMDQwNjMgTDgwMCw0MDIuOTk1OTM3IEM4MDAsNDAxLjM0MTMyNyA4MDEuMzM3MzEsNDAwIDgwMi45OTU5MzcsNDAwIFoiIGlkPSJzcXVhcmUtNDkiLz48L2c+PGcgZmlsbD0iI0ZGRkZGRiIgaWQ9Imljb24iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4Mi4wMDAwMDAsIDE1MC4wMDAwMDApIj48cGF0aCBkPSJNODIxLjA3MTI2Miw0MzQuMjIxMDQ2IEM4MTguMjEwODMxLDQzNC4yMjEwNDYgODE1LjUyMzU2OSw0MzMuNDg5OTY5IDgxMy4xODU2LDQzMi4yMDY4OTIgTDgwNC4xNTM4NDYsNDM1LjA3NjkyMyBMODA3LjA5ODA5Miw0MjYuMzkxODc3IEM4MDUuNjEzMDQ2LDQyMy45NTIzNjkgODA0Ljc1NzUzOCw0MjEuMDkxNTY5IDgwNC43NTc1MzgsNDE4LjAzMzYgQzgwNC43NTc1MzgsNDA5LjA5MzQxNSA4MTIuMDYxMjkyLDQwMS44NDYxNTQgODIxLjA3MTYzMSw0MDEuODQ2MTU0IEM4MzAuMDgwODYyLDQwMS44NDYxNTQgODM3LjM4NDYxNSw0MDkuMDkzNDE1IDgzNy4zODQ2MTUsNDE4LjAzMzYgQzgzNy4zODQ2MTUsNDI2Ljk3Mzc4NSA4MzAuMDgxMjMxLDQzNC4yMjEwNDYgODIxLjA3MTI2Miw0MzQuMjIxMDQ2IFogTTgyMS4wNzEyNjIsNDA0LjQyNDEyMyBDODEzLjUwNzkzOCw0MDQuNDI0MTIzIDgwNy4zNTU4MTUsNDEwLjUyOTM1NCA4MDcuMzU1ODE1LDQxOC4wMzM2IEM4MDcuMzU1ODE1LDQyMS4wMTE0NDYgODA4LjMyNjUyMyw0MjMuNzY5MjMxIDgwOS45NjgxMjMsNDI2LjAxMzA0NiBMODA4LjI1NDg5Miw0MzEuMDY3MDc3IEw4MTMuNTI1MjkyLDQyOS4zOTE4NzcgQzgxNS42OTEyLDQzMC44MTM3ODUgODE4LjI4NTQxNSw0MzEuNjQzMDc3IDgyMS4wNzEyNjIsNDMxLjY0MzA3NyBDODI4LjYzMzQ3Nyw0MzEuNjQzMDc3IDgzNC43ODY3MDgsNDI1LjUzODIxNSA4MzQuNzg2NzA4LDQxOC4wMzM5NjkgQzgzNC43ODY3MDgsNDEwLjUyOTcyMyA4MjguNjMzNDc3LDQwNC40MjQxMjMgODIxLjA3MTI2Miw0MDQuNDI0MTIzIEw4MjEuMDcxMjYyLDQwNC40MjQxMjMgWiBNODI5LjMwODgsNDIxLjc2MTcyMyBDODI5LjIwODM2OSw0MjEuNTk2Njc3IDgyOC45NDE3ODUsNDIxLjQ5Njk4NSA4MjguNTQyNjQ2LDQyMS4yOTg3MDggQzgyOC4xNDI0LDQyMS4xMDA0MzEgODI2LjE3NTg3Nyw0MjAuMTQwMDYyIDgyNS44MDk5NjksNDIwLjAwODI0NiBDODI1LjQ0Mjk1NCw0MTkuODc2MDYyIDgyNS4xNzYsNDE5LjgwOTIzMSA4MjQuOTA5Nzg1LDQyMC4yMDY1MjMgQzgyNC42NDM1NjksNDIwLjYwMzgxNSA4MjMuODc3MDQ2LDQyMS40OTY5ODUgODIzLjY0MzMyMyw0MjEuNzYxNzIzIEM4MjMuNDA5OTY5LDQyMi4wMjY4MzEgODIzLjE3Njk4NSw0MjIuMDYwMDYyIDgyMi43NzcxMDgsNDIxLjg2MTQxNSBDODIyLjM3NzYsNDIxLjY2MzEzOCA4MjEuMDg4OTg1LDQyMS4yNDQwNjIgODE5LjU2MTEwOCw0MTkuODkyMzA4IEM4MTguMzcyNTU0LDQxOC44NDA3MzggODE3LjU2OTg0Niw0MTcuNTQyNTIzIDgxNy4zMzY4NjIsNDE3LjE0NDg2MiBDODE3LjEwMzUwOCw0MTYuNzQ3OTM4IDgxNy4zMTIxMjMsNDE2LjUzMzQxNSA4MTcuNTEyMjQ2LDQxNi4zMzU4NzcgQzgxNy42OTIwNjIsNDE2LjE1NzkwOCA4MTcuOTEyMTIzLDQxNS44NzI0OTIgODE4LjExMjI0Niw0MTUuNjQwOTg1IEM4MTguMzEyMzY5LDQxNS40MDkxMDggODE4LjM3ODgzMSw0MTUuMjQ0MDYyIDgxOC41MTE3NTQsNDE0Ljk3ODk1NCBDODE4LjY0NTQxNSw0MTQuNzE0MjE1IDgxOC41Nzg1ODUsNDE0LjQ4MjcwOCA4MTguNDc4NTIzLDQxNC4yODM2OTIgQzgxOC4zNzg0NjIsNDE0LjA4NTQxNSA4MTcuNTc4MzM4LDQxMi4xMzI5MjMgODE3LjI0NTI5Miw0MTEuMzM4MzM4IEM4MTYuOTEyMjQ2LDQxMC41NDQ0OTIgODE2LjU3OTU2OSw0MTAuNjc2Njc3IDgxNi4zNDU4NDYsNDEwLjY3NjY3NyBDODE2LjExMjQ5Miw0MTAuNjc2Njc3IDgxNS44NDU5MDgsNDEwLjY0MzQ0NiA4MTUuNTc5MzIzLDQxMC42NDM0NDYgQzgxNS4zMTI3MzgsNDEwLjY0MzQ0NiA4MTQuODc5MjYyLDQxMC43NDI3NjkgODE0LjUxMjYxNSw0MTEuMTM5NjkyIEM4MTQuMTQ2MzM4LDQxMS41MzY5ODUgODEzLjExMzYsNDEyLjQ5Njk4NSA4MTMuMTEzNiw0MTQuNDQ5MTA4IEM4MTMuMTEzNiw0MTYuNDAxNiA4MTQuNTQ1ODQ2LDQxOC4yODggODE0Ljc0NjMzOCw0MTguNTUyMzY5IEM4MTQuOTQ2MDkyLDQxOC44MTY3MzggODE3LjUxMTg3Nyw0MjIuOTUzNiA4MjEuNTc2NzM4LDQyNC41NDI0IEM4MjUuNjQzMDc3LDQyNi4xMzA4MzEgODI1LjY0MzA3Nyw0MjUuNjAwOTg1IDgyNi4zNzYzNjksNDI1LjUzNDg5MiBDODI3LjEwODU1NCw0MjUuNDY4OCA4MjguNzQxMjkyLDQyNC41NzUyNjIgODI5LjA3NTQ0Niw0MjMuNjQ4ODYyIEM4MjkuNDA4MTIzLDQyMi43MjE3MjMgODI5LjQwODEyMyw0MjEuOTI3MTM4IDgyOS4zMDg4LDQyMS43NjE3MjMgTDgyOS4zMDg4LDQyMS43NjE3MjMgWiIgaWQ9IndoYXRzYXBwIi8+PC9nPjwvZz48L2c+PC9zdmc+");
+        /*Base 64 Icon by Xinh Studio*/
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+
+<body>
+    <div class="d-flex flex-column wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="/img/UrbanMotors.png" alt="Urban Motors" width="64px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/index.html"></a>
+                        </li>
+                    </ul>
+                    <div class="align-self-end bg-transparent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link text-white">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/index.html#video-container" class="nav-link text-white">Destaques</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/index.html#nossodestaque" class="nav-link text-white">Diferenciais</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/contato.html" class="nav-link text-white">Contato</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/sobrenos.html" class="nav-link text-white">Sobre nós</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="mb-5 pb-5 mb-md-3">
+            <div class="container mt-5">
+                <!--div class="row">
+                    <div class="col-12 col-md-5">
+                        <form class="justify-content-center justify-content-md-start mb-3 mb-md-0" onsubmit="searchFunction(event)">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="searchInput" placeholder="Digite aqui o que procura">
+                                <button type="submit" class="btn btn-warning">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 col-md-7">
+                        <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
+                            <form class="ml-3 d-inline-block">
+                                <select class="form-select form-select-sm">
+                                    <option>Ordenar pelo nome</option>
+                                    <option>Ordenar pelo menor preço</option>
+                                    <option>Ordenar pelo maior preço</option>
+                                    <option>Ordenar pela maior quilometragem</option>
+                                    <option>Ordenar pela menor quilometragem</option>
+                                    <option>Ordenar pelo ano</option>
+                                </select>
+                            </form>
+                            <nav class="d-inline-block">
+                                <ul class="pagination pagination-sm my-0">
+                                    <li class="page-item disabled">
+                                        <button class="page-link">1</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link">2</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link">3</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link">4</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link">5</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div-->
+                <hr class="mt-3">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Jaguar/jaguar.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="card-title">R$ 259.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Jaguar E-Pace P250 4WD</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2018
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Gasolina
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        2.0 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="jaguar.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Jeep/JeepRenegade.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 65.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Jeep Renegade Longitude</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2016
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.8 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="renegade.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Mercedes-Benz/E250.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 199.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Mercedes-Benz E250</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2017
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Gasolina
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        2.0 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="e250.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Nissan/Kicks.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="card-title">R$ 94.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Nissan Kicks</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2019
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.6 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="kicks.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/VW/Gol.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 59.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Volkswagen Gol MPI</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2023
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.0 Manual
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="gol.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Toyota/Hilux.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 250.900,00 </h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Toyota Hilux SRV D-4D Turbo</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2022
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Diesel
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        2.8 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="hilux.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-around">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Fiat/Toro.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="card-title">R$ 119.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Fiat Toro Turbo 270 Endurance</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2022
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.3 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="toro.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Citroen/C4Cactus.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 82.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Citroen C4 Cactus Feel</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2022
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.6 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="c4.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Toyota/slider-a.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 205.900,00 </h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Toyota Hilux SRX D-4D TURBO</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2020
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Diesel
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        2.8 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="hilux1.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-around">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Renault/Captur/slider-1.jpeg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="card-title">R$ 109.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Renault Captur TCE Iconic CVT</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2022
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.3 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="captur.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Hyundai/Creta/slider-6.jpeg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 82.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Hyundai Creta Action</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2022
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.6 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="creta.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Honda/slider-3.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 205.900,00 </h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"> Honda Fit DX</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2012
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.4 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="fit.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-around">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Nissan/FrontierWhite/slider-2.jpeg" class="card-img-top"
+                                alt="Carro1">
+                                <a href="javascript:void(0)" onclick="share()"
+                                class="text-decoration-none text-black">
+                                <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                    <use xlink:href="/bi.svg#share-fill"></use>
+                                </svg></a>
+                                <div class="card-header">
+                                <h5 class="card-title">R$ 163.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Nissan Frontier Attack 4x4</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2019
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Diesel
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        2.3 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="frontierwhite.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Hyundai/slider-1.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 65.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Hyundai HB20 Vision</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2022
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.0 Manual
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="hb20.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Caoa/Tiggo/slider-14.jpeg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 185.900,00 </h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"> Caoa Chery Tiggo 8 Turbo GDI TXS</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2022
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Gasolina
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.6 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="tiggo8.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-around">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Ford/slider-1.jpg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="card-title">R$ 43.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Ford Ka Sedan</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2020
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.5 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="ka.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Nissan/FrontierBlack/slider-3.jpeg" class="card-img-top"
+                                alt="Carro1">
+                                <a href="javascript:void(0)" onclick="share()"
+                                class="text-decoration-none text-black">
+                                <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                    <use xlink:href="/bi.svg#share-fill"></use>
+                                </svg></a>
+                                <div class="card-header">
+                                <h5 class="text-title">R$ 65.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Nissan Frontier XE 4x4</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="frontierblack.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Mitsubishi/L200/slider-14.jpeg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 185.900,00 </h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"> Mitsubishi L200 Triton Sport</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2023
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Diesel
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        2.4 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="l200.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-around">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Nissan/March/slider-3.jpeg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="card-title">R$ 42.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Nissan March SV</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2015
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.0 Manual
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="march.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/Fiat/Mobi/slider-3.jpeg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 59.900,00</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Fiat Mobi Like</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2023
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.0 Manual
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="mobired.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light">
+                            <img src="/img/Estoque/VW/slider-b.jpeg" class="card-img-top" alt="Carro1">
+                            <a href="javascript:void(0)" onclick="share()"
+                            class="text-decoration-none text-black">
+                            <svg class="bi mx-3" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#share-fill"></use>
+                            </svg></a>
+                            <div class="card-header">
+                                <h5 class="text-title">R$ 145.900,00 </h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"> Volkswagen Tiguan Allspace 250TI</h5>
+                                <ul class="list-group text-start">
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#calendar3"></use>
+                                        </svg>
+                                        2018
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#fuel-pump"></use>
+                                        </svg>
+                                        Flex
+                                    </li>
+                                    <li class="list-group-item">
+                                        <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                            <use xlink:href="/bi.svg#speedometer"></use>
+                                        </svg>
+                                        1.4 Automático
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <form class="d-block">
+                                    <button class="btn btn-warning">
+                                        <a href="tiguan.html" class="text-decoration-none text-black">
+                                            Mais detalhes</a>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-3">
+                <!--div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
+                    <form class="ml-3 d-inline-block">
+                        <select class="form-select form-select-sm">
+                            <option>Ordenar pelo nome</option>
+                            <option>Ordenar pelo menor preço</option>
+                            <option>Ordenar pelo maior preço</option>
+                            <option>Ordenar pela maior quilometragem</option>
+                            <option>Ordenar pela menor quilometragem</option>
+                            <option>Ordenar pelo ano</option>
+                        </select>
+                    </form>
+                    <nav class="d-inline-block">
+                        <ul class="pagination pagination-sm my-0">
+                            <li class="page-item disabled">
+                                <button class="page-link">1</button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link">2</button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link">3</button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link">4</button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link">5</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div-->
+            </div>
+        </main>
+
+        <div style="height: 273px;" class="d-block d-md-none"></div>
+        <div style="height: 153px;" class="d-none d-md-block d-lg-none"></div>
+        <div style="height: 129px;" class="d-none d-lg-block"></div>
+
+        <footer class="border-top text-muted bg-black pt-3">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+            <a href="https://wa.me//558586964555?text=Vim%20pelo%20site,%20pode%20me%20ajudar?" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+                <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+            </a>
+            <div class="container justify-content-around">
+                <div class="row py-3">
+                    <div class="col-12 col-md-4 text-center text-md-left">
+                        <!--a href="privacidade.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Política de
+                            privacidade</a><br>
+                        <a href="termos.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Termos de uso</a><br>
+                        <a href="#"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Quem somos</a><br>
+                        <a href="garantia.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Política de garantia</a-->
+                    </div>
+                    <div class="col-12 col-md-4 text-center text-md-left text-light">
+                        &copy; 2023 - <strong>Urban Motors Automoveis LTDA</strong><br>
+                        Rua Eliseu Uchôa Beco, 63 - Guararapes, Fortaleza/CE<br>
+                        CEP: 60810-270<br>
+                        CNPJ: 26.528.425/0001-61 <br>
+                        Email: <a href="mailto:urbanmotors_@outlook.com" class="text-decoration-none text-light">
+                            urbanmotors_@outlook.com</a><br>
+                        Telefone: <a href="phone:8521396927" class="text-decoration-none text-light"> +55 85
+                            2139-6927</a><br>
+                        <a href="https://www.instagram.com/urbanmotorsofc/">
+                            <img src="/img/insta.png" alt="socials" class="my-2"></a>
+                        <a href="https://wa.me//558586964555?text=Vim%20pelo%20site,%20pode%20me%20ajudar?">
+                            <img src="/img/wpp.png" alt="socials" class="my-2"></a>
+                    </div>
+
+                    <!--div class="col-12 col-md-4 text-center text-md-right text-light">
+                        <a href="contato.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Contato pelo site</a><br>
+                        Email: <a href="mailto:urbanmotorsce@gmail.com" class="text-decoration-none text-light">
+                            urbanmotorsce@gmail.com</a><br>
+                        Telefone: <a href="phone:8521396927" class="text-decoration-none text-light"> +55 85
+                            2139-6927</a>
+                    </div-->
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function share() {
+            if (navigator.share !== undefined) {
+                navigator.share({
+                    title: 'Urban Motors | Urbano e Moderno',
+                    text: 'Confira nosso showroom de carros novos e seminovos',
+                    url: 'https://urbanmotorsbr.com.br/estoque.html',
+                })
+                    .then(() => console.log('Successful share'))
+                    .catch((error) => console.log('Error sharing', error));
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function searchFunction(event) {
+            event.preventDefault(); // Impede o envio do formulário padrão
+            var searchTerm = document.getElementById('searchInput').value;
+
+            // Aqui você pode realizar a lógica de busca com o termo inserido (por exemplo, mostrar resultados, enviar para o servidor, etc.)
+            console.log("Termo de busca: " + searchTerm);
+        }
+    </script>
+    <script type="text/javascript">
+        //Constrói a URL depois que o DOM estiver pronto
+        document.addEventListener("DOMContentLoaded", function () {
+            //conteúdo que será compartilhado: Título da página + URL
+            var conteudo = encodeURIComponent(document.title + " " + window.location.href);
+            //altera a URL do botão
+            document.getElementById("whatsapp-share-btt").href = "https://api.whatsapp.com/send?text=" + conteudo;
+        }, false);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>URBAN MOTORS | Urbano e Moderno</title>
+</head>
+
+<style>
+    body {
+        font-family: 'Poppins' sans-serif;
+        background-color: rgb(251, 251, 251);
+    }
+
+
+    body::-webkit-scrollbar {
+        width: 0;
+    }
+
+    body {
+        scrollbar-width: none;
+    }
+
+
+    .btn,
+    a {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        color: white;
+    }
+
+    h3 {
+        font-family: 'Poppins', sans-serif;
+        color: white;
+    }
+
+    .container-with-background {
+        overflow: hidden;
+        background-image: url('/img/Cover.png');
+        background-size: cover;
+        background-position: center;
+        max-width: 100%;
+        max-height: 1000px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h2 {
+        text-decoration: underline rgb(254, 132, 0);
+
+    }
+
+    .indicator {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+    }
+
+    .card-img-top {
+        border-radius: 20px;
+        padding: 10px;
+    }
+
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    }
+
+    .custom-container {
+        background-color: #ffe4c6;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .custom-container1 {
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .column {
+        text-align: center;
+        width: 30%;
+        padding: 15px;
+
+    }
+
+    .custom-column {
+        height: 100%;
+        width: 30%;
+        margin-bottom: 20px;
+        /* Espaçamento entre as colunas */
+    }
+
+    .custom-card {
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: 100%;
+    }
+
+    #nossodestaque {
+
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-warning {
+        background-color: rgb(254, 132, 0);
+    }
+
+    .background-div {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+        /* Garante que a div com as duas linhas fique atrás das colunas */
+        background-color: #f0f0f0;
+        /* Cor de fundo, pode ser ajustada conforme necessário */
+    }
+
+    .custom-container1 {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+        position: relative;
+        z-index: 2;
+        /* Garante que as colunas fiquem à frente da div com as duas linhas */
+    }
+
+    .custom-column {
+        flex: 0 0 30%;
+        /* Ajuste a largura das colunas conforme necessário */
+        background-color: #fff;
+        /* Cor de fundo das colunas, pode ser ajustada conforme necessário */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Adicione sombra às colunas se desejar */
+    }
+
+    .custom-card {
+        text-align: center;
+        position: relative;
+        width: 80%;
+        height: calc(100% - 38px);
+        margin: 0 auto;
+        top: 19px;
+        border-radius: 3px;
+        background-color: orange;
+    }
+
+    #jaguar {
+        width: 40px;
+        height: 40px;
+    }
+
+    #video-container {
+        position: relative;
+    }
+
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        /* Ajuste a cor do texto conforme necessário */
+        z-index: 1;
+        /* Certifique-se de que a div content esteja acima do vídeo */
+    }
+
+    .video-desk {
+        position: relative;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    .video-js.vjs-playing .vjs-tech {
+        pointer-events: none;
+    }
+
+    .featured-img {
+        height: auto;
+        width: 160vh;
+        margin: auto;
+        display: block;
+        min-width: 60vh;
+    }
+
+    .navbar-gradient {
+        background: linear-gradient(90deg, rgba(17, 17, 17, 1) 42.62%, rgba(255, 255, 255, 1) 42.62%);
+        border: none;
+        border-bottom: none;
+    }
+
+    #thing {
+        width: 435px;
+        height: 267px;
+        background: url('./img/Estoque/Jaguar/spritesheet.png') no-repeat 0 0%;
+        animation: sprite 3.5s steps(45) infinite;
+    }
+
+    @keyframes sprite {
+        from {
+            background-position: 0 0%;
+        }
+
+        to {
+            background-position: 0 100%;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .featured-img {
+            width: 80vh;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        .featured-img {
+            width: 80vh;
+        }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+        .featured-img {
+            width: 100vh;
+        }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .featured-img {
+            width: 120vh;
+        }
+    }
+
+    @media screen and (min-width: 1201px) {
+        .featured-img {
+            width: 135vh;
+        }
+    }
+
+    @media screen and (min-width: 1025px) and (max-width: 1200px) {
+        .featured-img {
+            width: 130vh;
+        }
+    }
+
+    .CookieMessage {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #121212;
+        z-index: 999;
+        display: none;
+    }
+
+    .CookieMessage-content {
+        color: white;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 20px 0 20px;
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-size: 12px;
+
+    }
+
+    .CookieMessage-content a {
+        color: white;
+    }
+
+    .CookieMessage-content p {
+        margin: 0 0 20px 0;
+    }
+
+    .CookieMessage-button {
+        background: rgb(254, 132, 0);
+        display: inline-block;
+        text-decoration: none;
+        padding: 5px 20px;
+        border-radius: 5px;
+        text-transform: uppercase;
+
+    }
+
+    .CookieMessage-button:hover {
+        background: rgb(254, 132, 0);
+        ;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+</style>
+
+
+<body>
+    <div class="d-flex flex-column wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="/img/UrbanMotors.png" alt="Urban Motors" width="64px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/index.html"></a>
+                        </li>
+                    </ul>
+                    <div class="align-self-end bg-transparent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-white">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/index.html#video-container" class="nav-link text-white">Destaques</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/index.html#nossodestaque" class="nav-link text-white">Diferenciais</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/contato.html" class="nav-link text-white">Contato</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/sobrenos.html" class="nav-link text-white">Sobre nós</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main >
+            <div class="container-fluid p-0 position-relative">
+                <a href="https://wa.me//558586964555?text=Vim%20pelo%20site,%20pode%20me%20ajudar?">
+                    <img src="/img/Slide/slide1.png" alt="slide1" class=" d-none d-md-block w-100">
+                    <img src="/img/Slide/slide1small.png" class="d-block d-md-none  w-100" alt="slide1small">
+                </a>
+            </div>
+            <section id="video-container" class="d-block">
+                <div class="container-with-background d-block w-100">
+                    <video id="jaguarvideo" class="video-desk" data-autoid="hero:video" title="" preload="auto"
+                        playsinline loop autoplay muted controls controlslist="nodownload">
+                        <source src="/video/XCL24GL_303102432_063_X540_16x9_PRORES_CLEAN.mp4" type="video/mp4"
+                            class="ab">
+                    </video>
+                    <img src="/img/Cover.png">
+                    <div class="content">
+                        <img src="/video/jagarlogo.png" alt="Jaguar" id="jaguar">
+                        <h1>E-PACE</h1>
+                        <p>Conectividade impecável.<br> Conforto máximo.</p>
+                        <!--h2 class="text-center mb-0">Carro em destaque</h2-->
+                        <div id="carCarousel" class="carousel">
+                            <div class="carousel-inner">
+                                <!-- Car Images -->
+                                <div class="carousel-item active">
+                                    <img src="img/Destaque/jaguarfrente.png" class="d-block w-150 featured-img"
+                                        alt="frente">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/img/Destaque/jaguarlateral.png" class="d-block w-150 featured-img"
+                                        alt="lateral">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/img/Destaque/jaguartraseira.png" class="d-block w-150 featured-img"
+                                        alt="traseira">
+                                </div>
+                                <!-- <div id='thing'></div> -->
+                            </div>
+                            <button class="btn btn-warning">
+                                                    <a href="jaguar.html" class="text-decoration-none">
+                                                        Mais detalhes</a>
+                                                </button>
+                            <a class="carousel-control-prev" href="#carCarousel" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carCarousel" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Próximo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <h2 class="text-center mt-5" id="estoque">Motors</h2>
+            <div class="container my-5">
+                <div class="carousel slide carousel-dark" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                                    <div class="card text-center bg-light">
+                                        <img src="/img/Estoque/Jaguar/jaguar.jpg" class="card-img-top" alt="Carro1">
+                                        <!--div class="card-header">
+                                            <h5 class="card-title">R$ 259.900,00</h5>
+                                        </div-->
+                                        <div class="card-body">
+                                            <h5 class="card-title">Jaguar E-Pace P250 4WD</h5>
+                                            <ul class="list-group text-start">
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#calendar3"></use>
+                                                    </svg>
+                                                    2018
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#fuel-pump"></use>
+                                                    </svg>
+                                                    Gasolina
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#speedometer"></use>
+                                                    </svg>
+                                                    2.0 Automático
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                            <form class="d-block">
+                                                <button class="btn btn-warning">
+                                                    <a href="jaguar.html" class="text-decoration-none">
+                                                        Mais detalhes</a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                                    <div class="card text-center bg-light">
+                                        <img src="/img/Estoque/Jeep/JeepRenegade.jpg" class="card-img-top" alt="Carro1">
+                                        <!--div class="card-header">
+                                            <h5 class="text-title">R$ 65.900,00</h5>
+                                        </div-->
+                                        <div class="card-body">
+                                            <h5 class="card-title">Jeep Renegade Longitude</h5>
+                                            <ul class="list-group text-start">
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#calendar3"></use>
+                                                    </svg>
+                                                    2016
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#fuel-pump"></use>
+                                                    </svg>
+                                                    Flex
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#speedometer"></use>
+                                                    </svg>
+                                                    1.8 Automático
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                            <form class="d-block">
+                                                <button class="btn btn-warning">
+                                                    <a href="renegade.html" class="text-decoration-none">
+                                                        Mais detalhes</a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                                    <div class="card text-center bg-light">
+                                        <img src="/img/Estoque/Mercedes-Benz/E250.jpg" class="card-img-top"
+                                            alt="Carro1">
+                                        <!--div class="card-header">
+                                            <h5 class="text-title">Sob consulta</h5>
+                                        </div-->
+                                        <div class="card-body">
+                                            <h5 class="card-title">Mercedes-Benz E250</h5>
+                                            <ul class="list-group text-start">
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#calendar3"></use>
+                                                    </svg>
+                                                    2017
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#fuel-pump"></use>
+                                                    </svg>
+                                                    Gasolina
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#speedometer"></use>
+                                                    </svg>
+                                                    2.0 Automático
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                            <form class="d-block">
+                                                <button class="btn btn-warning">
+                                                    <a href="e250.html" class="text-decoration-none">
+                                                        Mais detalhes</a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row mt-3">
+                                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                                    <div class="card text-center bg-light">
+                                        <img src="/img/Estoque/Nissan/Kicks.jpg" class="card-img-top" alt="Carro1">
+                                        <!--div class="card-header">
+                                            <h5 class="card-title">R$ 94.900,00</h5>
+                                        </div-->
+                                        <div class="card-body">
+                                            <h5 class="card-title">Nissan Kicks</h5>
+                                            <ul class="list-group text-start">
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#calendar3"></use>
+                                                    </svg>
+                                                    2019
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#fuel-pump"></use>
+                                                    </svg>
+                                                    Flex
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#speedometer"></use>
+                                                    </svg>
+                                                    1.6 Automático
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                            <form class="d-block">
+                                                <button class="btn btn-warning">
+                                                    <a href="kicks.html" class="text-decoration-none">
+                                                        Mais detalhes</a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                                    <div class="card text-center bg-light">
+                                        <img src="/img/Estoque/VW/Gol.jpg" class="card-img-top" alt="Carro1">
+                                        <!--div class="card-header">
+                                            <h5 class="text-title">R$ 59.900,00</h5>
+                                        </div-->
+                                        <div class="card-body">
+                                            <h5 class="card-title">Volkswagen Gol MPI</h5>
+                                            <ul class="list-group text-start">
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#calendar3"></use>
+                                                    </svg>
+                                                    2023
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#fuel-pump"></use>
+                                                    </svg>
+                                                    Flex
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#speedometer"></use>
+                                                    </svg>
+                                                    1.0 Manual
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                            <form class="d-block">
+                                                <button class="btn btn-warning">
+                                                    <a href="gol.html" class="text-decoration-none">
+                                                        Mais detalhes</a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch">
+                                    <div class="card text-center bg-light">
+                                        <img src="/img/Estoque/Toyota/Hilux.jpg" class="card-img-top" alt="Carro1">
+                                        <!--div class="card-header">
+                                            <h5 class="text-title">R$ 205.900,00 </h5>
+                                        </div-->
+                                        <div class="card-body">
+                                            <h5 class="card-title">Toyota Hilux SRV D-4D TURBO</h5>
+                                            <ul class="list-group text-start">
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#calendar3"></use>
+                                                    </svg>
+                                                    2022
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#fuel-pump"></use>
+                                                    </svg>
+                                                    Diesel
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <svg class="bi mx-3" width="24" height="24" fill="gray">
+                                                        <use xlink:href="/bi.svg#speedometer"></use>
+                                                    </svg>
+                                                    2.8 Automático
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                            <form class="d-block">
+                                                <button class="btn btn-warning">
+                                                    <a href="hilux.html" class="text-decoration-none">
+                                                        Mais detalhes</a>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center my-5">
+                <button class="btn btn-warning">
+                    <a href="estoque.html" class="text-decoration-none">
+                        Ver todo o estoque</a>
+                </button>
+            </div>
+            <div class="bg-black py-2">
+                <h2 class="text-center mt-5" id="nossodestaque">Nossos destaques!</h2>
+                <h6 class="text-center mt-2" id="nossodestaque">O que nos torna excelentes?</h6>
+                <div class="row justify-content-around">
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch ">
+                        <div class="card text-center bg-light mb-3">
+                            <div class="card-header">
+                                <span class="bi">
+                                    <svg class="bi mt-3" width="32" height="32" fill="rgb(254, 132, 0)">
+                                        <use xlink:href="/bi.svg#award-fill"></use>
+                                    </svg>
+                                </span>
+                                <h5 class="card-title">Qualidade iningualável!</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Cada veículo em nosso
+                                    showroom é criteriosamente
+                                    selecionado, garantindo a
+                                    melhor qualidade possível.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light mb-3">
+                            <div class="card-header">
+                                <span class="bi">
+                                    <svg class="bi mt-3" width="32" height="32" fill="rgb(254, 132, 0)">
+                                        <use xlink:href="/bi.svg#award-fill"></use>
+                                    </svg>
+                                </span>
+                                <h5 class="card-title">Assistência personalizável</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Nossa equipe está dedicada a
+                                    entender suas necessidades e
+                                    aconselhá-lo sobre as melhores
+                                    opçóes para o
+                                    seu estilo de vida.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch">
+                        <div class="card text-center bg-light mb-3">
+                            <div class="card-header">
+                                <span class="bi">
+                                    <svg class="bi mt-3" width="32" height="32" fill="rgb(254, 132, 0)">
+                                        <use xlink:href="/bi.svg#award-fill"></use>
+                                    </svg>
+                                </span>
+                                <h5 class="card-title">Transparência total!</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Acreditamos que a confiança é a
+                                    base de qualquer relacionamento
+                                    e nos esforçamos para construir
+                                    essa confiança com cada cliente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-container mt-5 justify-content-around">
+                <div class="column">
+                    <h1>5.625+</h1>
+                    <p>Carros vendidos</p>
+                </div>
+                <div class="column">
+                    <h1>5.625+</h1>
+                    <p>Clientes satisfeitos</p>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <form class="col-sm-10 col-md-8 col-lg-6">
+                        <h2 class="text-center mb-4">Contato</h2>
+                        <div class="form-floating mb-3">
+                            <input type="text" id="txtNomeCompleto" class="form-control" placeholder=" ">
+                            <label for="txtNomeCompleto">Nome Completo</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" id="txtEmail" class="form-control" placeholder=" ">
+                            <label for="txtEmail">E-mail</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <textarea id="txtMensagem" class="form-control" placeholder=" "
+                                style="height: 200px;"></textarea>
+                            <label for="txtMensagem">Mensagem</label>
+                        </div>
+
+                        <button type="button" onclick="window.location.href='/confirmcontato.html'"
+                            class="btn btn-lg btn-warning">Enviar Mensagem</button>
+
+                        <p class="mt-3">
+                            Faremos nosso melhor para responder sua mensagem o mais rápido possível.
+                        </p>
+
+                        <p class="mt-3">
+                            Atenciosamente,<br>
+                            Urban Motors
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <h2 class="text-center mb-4">Localização</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.2345214250536!2d-38.48898859051202!3d-3.759055443310863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c7490cede2fd6d%3A0x9e1db58d9a3d3516!2sUrban%20Motors%2C%20moderno%20e%20urbano!5e0!3m2!1spt-BR!2sbr!4v1700303439849!5m2!1spt-BR!2sbr"
+                        width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                </div>
+            </div>
+            <div id="cookie-notification" class="CookieMessage" style="display: none;">
+                <div class="CookieMessage-content">
+                    <p>Este site utiliza cookies de navegação para a melhor experiência do usuário. <a
+                            href="privacidade.html">Saiba mais</a></p>
+                    <p><a id="cookie-notification-close" class="CookieMessage-button" href="#">Aceitar</a></p>
+                </div>
+            </div>
+        </main>
+
+        <div style="height: 273px;" class="d-block d-md-none"></div>
+        <div style="height: 153px;" class="d-none d-md-block d-lg-none"></div>
+        <div style="height: 129px;" class="d-none d-lg-block"></div>
+
+        <footer class="border-top text-muted bg-black pt-3">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+            <a href="https://wa.me//558586964555?text=Vim%20pelo%20site,%20pode%20me%20ajudar?" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+                <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+            </a>
+            <div class="container justify-content-around">
+                <div class="row py-3">
+                    <div class="col-12 col-md-4 text-center text-md-left">
+                        <!--a href="privacidade.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Política de
+                            privacidade</a><br>
+                        <a href="termos.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Termos de uso</a><br>
+                        <a href="#"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Quem somos</a><br>
+                        <a href="garantia.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Política de garantia</a-->
+                    </div>
+                    <div class="col-12 col-md-4 text-center text-md-left text-light">
+                        &copy; 2023 - <strong>Urban Motors Automoveis LTDA</strong><br>
+                        Rua Eliseu Uchôa Beco, 63 - Guararapes, Fortaleza/CE<br>
+                        CEP: 60810-270<br>
+                        CNPJ: 26.528.425/0001-61 <br>
+                        Email: <a href="mailto:urbanmotors_@outlook.com" class="text-decoration-none text-light">
+                            urbanmotors_@outlook.com</a><br>
+                        Telefone: <a href="phone:8521396927" class="text-decoration-none text-light"> +55 85
+                            2139-6927</a><br>
+                            <a href="https://www.instagram.com/urbanmotorsofc/"> 
+                        <img src="/img/insta.png" alt="socials" class="my-2"></a>
+                        <a href="https://wa.me//558586964555?text=Vim%20pelo%20site,%20pode%20me%20ajudar?"> 
+                            <img src="/img/wpp.png" alt="socials" class="my-2"></a>
+                    </div>
+
+                    <!--div class="col-12 col-md-4 text-center text-md-right text-light">
+                        <a href="contato.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Contato pelo site</a><br>
+                        Email: <a href="mailto:urbanmotorsce@gmail.com" class="text-decoration-none text-light">
+                            urbanmotorsce@gmail.com</a><br>
+                        Telefone: <a href="phone:8521396927" class="text-decoration-none text-light"> +55 85
+                            2139-6927</a>
+                    </div-->
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        if (!localStorage.getItem("cookiesAccepted")) {
+            var cookieMessage = document.getElementById('cookie-notification');
+            var closeCookie = document.getElementById('cookie-notification-close');
+
+            cookieMessage.style.display = 'block';
+            closeCookie.addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.setItem("cookiesAccepted", true);
+
+                cookieMessage.style.display = 'none';
+            });
+        }
+    </script>
+    <script>
+        // Intervalo negativo entre as transições de slide (em milissegundos)
+        var negativeInterval = 500;
+
+        // Inicia o carrossel com um intervalo negativo
+        var carCarousel = new bootstrap.Carousel(document.getElementById('carCarousel'), {
+            interval: negativeInterval
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+    <title>URBAN MOTORS | Urbano e Moderno</title>
+</head>
+<style>
+    body {
+        background-color: rgb(251, 251, 251);
+    }
+
+    a {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+    }
+
+    li {
+        font-family: 'Poppins', sans-serif;
+        color: gray;
+    }
+
+    .card-img-top {
+        border-radius: 20px;
+        padding: 10px;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    }
+
+    .btn-warning {
+        background-color: rgb(254, 132, 0);
+    }
+
+    .gallery {
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 5px;
+    }
+
+    .gallery img {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        margin: 10px;
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal img {
+        max-width: 80%;
+        max-height: 80%;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Navigation buttons styles */
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: #333;
+        color: #fff;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #prevBtn {
+        left: 15px;
+    }
+
+    #nextBtn {
+        right: 15px;
+    }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        /* Defina a altura desejada */
+        overflow: hidden;
+    }
+
+    /* Adicione a imagem de plano de fundo */
+    .image-container img {
+        width: 100vw;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        filter: brightness(0.50) opacity(0.90);
+        box-shadow: 10 0 50px rgba(0, 0, 0, 0.3);
+        /* Adiciona uma sombra escura */
+    }
+
+    /* Estilize o título sobreposto */
+    .image-container h2 {
+        position: absolute;
+        bottom: 30px;
+        /* Ajuste conforme necessário */
+        left: 30px;
+        /* Ajuste conforme necessário */
+        color: #fff;
+        font-size: 32px;
+        margin: 0;
+        text-align: left;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --color-primary: rgb(254, 132, 0);
+        --tab-width: 100vw;
+        --button-width: 64px;
+    }
+
+    .widget {
+        background: black;
+        width: var(--tab-width);
+    }
+
+    input {
+        display: none;
+    }
+
+    h2 {
+        color: rgb(254, 132, 0);
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .content {
+        position: relative;
+        overflow: hidden;
+        height: 140px;
+    }
+
+    .content-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        width: calc(var(--tab-width) * 6);
+        transition: 0.3s;
+    }
+
+    .content-inner>div {
+        width: inherit;
+        padding: 20px;
+    }
+
+    label {
+        padding: 20px;
+        font-size: 15px;
+        width: var(--button-width);
+        opacity: 0.35;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    p {
+        margin: 0;
+        font-size: 14px;
+        color: white;
+    }
+
+    .buttons {
+        position: relative;
+        display: flex;
+        border-bottom: 1px solid rgb(254, 132, 0);
+    }
+
+    .underline {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 64px;
+        height: 3px;
+        background: var(--color-primary);
+        transition: 0.2s;
+    }
+
+    .tabs input:nth-child(1):checked~.buttons .underline {
+        translate: 0 0;
+    }
+
+    .tabs input:nth-child(2):checked~.buttons .underline {
+        translate: var(--button-width) 0;
+    }
+
+    .tabs input:nth-child(3):checked~.buttons .underline {
+        translate: calc(var(--button-width) * 2) 0;
+    }
+
+    .tabs input:nth-child(4):checked~.buttons .underline {
+        translate: calc(var(--button-width) * 3) 0;
+    }
+
+    .tabs input:nth-child(5):checked~.buttons .underline {
+        translate: calc(var(--button-width) * 4) 0;
+    }
+
+    .tabs input:nth-child(6):checked~.buttons .underline {
+        translate: calc(var(--button-width) * 5) 0;
+    }
+
+    .tabs input:nth-child(1):checked~.buttons label:nth-child(1),
+    .tabs input:nth-child(2):checked~.buttons label:nth-child(2),
+    .tabs input:nth-child(3):checked~.buttons label:nth-child(3),
+    .tabs input:nth-child(4):checked~.buttons label:nth-child(4),
+    .tabs input:nth-child(5):checked~.buttons label:nth-child(5),
+    .tabs input:nth-child(6):checked~.buttons label:nth-child(6) {
+        opacity: 1;
+    }
+
+    .tabs input:nth-child(1):checked~.content>.content-inner {
+        translate: 0 0;
+    }
+
+    .tabs input:nth-child(2):checked~.content>.content-inner {
+        translate: calc(0px - var(--tab-width)) 0;
+    }
+
+    .tabs input:nth-child(3):checked~.content>.content-inner {
+        translate: calc(0px - var(--tab-width) * 2) 0;
+    }
+
+    .tabs input:nth-child(4):checked~.content>.content-inner {
+        translate: calc(0px - var(--tab-width) * 3) 0;
+
+    }
+
+    .tabs input:nth-child(5):checked~.content>.content-inner {
+        translate: calc(0px - var(--tab-width) * 4) 0;
+    }
+
+    .tabs input:nth-child(6):checked~.content>.content-inner {
+        translate: calc(0px - var(--tab-width) * 5) 0;
+    }
+</style>
+
+<body>
+    <div class="d-flex flex-column wrapper overflow-auto">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="/img/UrbanMotors.png" alt="Urban Motors" width="64px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/index.html"></a>
+                        </li>
+                    </ul>
+                    <div class="align-self-end bg-transparent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link text-white">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/index.html#video-container" class="nav-link text-white">Destaques</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/index.html#nossodestaque" class="nav-link text-white">Diferenciais</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/contato.html" class="nav-link text-white">Contato</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/sobrenos.html" class="nav-link text-white">Sobre nós</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <header class="text-center">
+            <div class="image-container d-flex">
+                <img src="/img/Estoque/Hyundai/Creta/slider-6.jpeg" alt="Imagem de Fundo">
+                <h2>HYUNDAI<br>CRETA ACTION<a href="javascript:void(0)" onclick="share()"
+                    class="text-decoration-none text-black">
+                    <svg class="bi mx-3" width="24" height="24" fill="orange">
+                        <use xlink:href="/bi.svg#share-fill"></use>
+                    </svg></a></h2>
+            </div>
+        </header>
+
+        <main class="pb-5">
+            <div class="widget justify-content-around">
+                <div class="tabs">
+                    <input id="tab-1" type="radio" name="group" />
+                    <input id="tab-2" type="radio" name="group" />
+                    <input id="tab-3" type="radio" name="group" />
+                    <input id="tab-4" type="radio" name="group" />
+                    <input id="tab-5" type="radio" name="group" />
+                    <input id="tab-6" type="radio" name="group" />
+
+                    <div class="buttons">
+                        <label class="material-symbols-outlined" for="tab-1">
+                            <svg class="bi" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#calendar3"></use>
+                            </svg>
+                        </label>
+                        <label class="material-symbols-outlined" for="tab-2">
+                            <svg class="bi" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#fuel-pump"></use>
+                            </svg></label>
+                        <label class="material-symbols-outlined" for="tab-3">
+                            <svg class="bi" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#speedometer"></use>
+                            </svg></label>
+                        <label class="material-symbols-outlined" for="tab-4">
+                            <svg class="bi" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#pin-map-fill"></use>
+                            </svg></label>
+                        <label class="material-symbols-outlined" for="tab-5">
+                            <svg class="bi" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#car-front-fill"></use>
+                            </svg></label>
+                        <label class="material-symbols-outlined" for="tab-6">
+                            <svg class="bi" width="24" height="24" fill="orange">
+                                <use xlink:href="/bi.svg#tag-fill"></use>
+                            </svg></label>
+                        <div class="underline"></div>
+                    </div>
+
+                    <div class="content">
+                        <div class="content-inner">
+                            <div>
+                                <h2>Ano/Modelo</h2>
+                                <p>
+                                    2021/2022
+                                </p>
+                            </div>
+                            <div>
+                                <h2>Combustível</h2>
+                                <p>
+                                    Flex
+                                </p>
+                            </div>
+                            <div>
+                                <h2>Motor</h2>
+                                <p>
+                                    1.6
+                                </p>
+                            </div>
+                            <div>
+                                <h2>Transmissão</h2>
+                                <p>
+                                    Automático
+                                </p>
+                            </div>
+                            <div>
+                                <h2>Quilometragem</h2>
+                                <p>
+                                    52.996km
+                                </p>
+                            </div>
+                            <div>
+                                <h2>Preço</h2>
+                                <p>
+                                    R$ 110.900,00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="my-3 text-center">Detalhes</h2><br>
+            <div class="gallery slider">
+                <img src="/img/Estoque/Hyundai/Creta/slider-1.jpeg" alt="Imagem 1"
+                    onclick="openModal('/img/Estoque/Hyundai/slider-1.jpg', 0)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-2.jpeg" alt="Imagem 2"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-2.jpeg', 1)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-3.jpeg" alt="Imagem 3"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-3.jpeg', 2)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-4.jpeg" alt="Imagem 4"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-4.jpeg', 3)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-5.jpeg" alt="Imagem 5"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-5.jpeg', 4)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-6.jpeg" alt="Imagem 6"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-6.jpeg', 5)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-7.jpeg" alt="Imagem 7"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-7.jpeg', 6)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-8.jpeg" alt="Imagem 8"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-8.jpeg', 7)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-9.jpeg" alt="Imagem 9"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-9.jpeg', 8)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-10.jpeg" alt="Imagem 10"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-10.jpeg', 9)">
+                <img src="/img/Estoque/Hyundai/Creta/slider-11.jpeg" alt="Imagem 11"
+                    onclick="openModal('/img/Estoque/Hyundai/Creta/slider-11.jpeg', 10)">
+
+                <!-- Adicione mais imagens conforme necessário -->
+            </div>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <img id="modal-img" src="" alt="Imagem em tamanho real">
+                <button class="nav-btn" id="prevBtn" onclick="changeImage(-1)">&#8249;</button>
+                <button class="nav-btn" id="nextBtn" onclick="changeImage(1)">&#8250;</button>
+            </div>
+        </main>
+
+        <div style="height: 273px;" class="d-block d-md-none"></div>
+        <div style="height: 153px;" class="d-none d-md-block d-lg-none"></div>
+        <div style="height: 129px;" class="d-none d-lg-block"></div>
+
+        <footer class="border-top text-muted bg-black pt-3">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+            <a href="https://wa.me//558586964555?text=Vim%20pelo%20site,%20pode%20me%20ajudar?" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+                <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+            </a>
+            <div class="container justify-content-around">
+                <div class="row py-3">
+                    <div class="col-12 col-md-4 text-center text-md-left">
+                        <!--a href="privacidade.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Política de
+                            privacidade</a><br>
+                        <a href="termos.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Termos de uso</a><br>
+                        <a href="#"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Quem somos</a><br>
+                        <a href="garantia.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Política de garantia</a-->
+                    </div>
+                    <div class="col-12 col-md-4 text-center text-md-left text-light">
+                        &copy; 2023 - <strong>Urban Motors Automoveis LTDA</strong><br>
+                        Rua Eliseu Uchôa Beco, 63 - Guararapes, Fortaleza/CE<br>
+                        CEP: 60810-270<br>
+                        CNPJ: 26.528.425/0001-61 <br>
+                        Email: <a href="mailto:urbanmotors_@outlook.com" class="text-decoration-none text-light">
+                            urbanmotors_@outlook.com</a><br>
+                        Telefone: <a href="phone:8521396927" class="text-decoration-none text-light"> +55 85
+                            2139-6927</a><br>
+                            <a href="https://www.instagram.com/urbanmotorsofc/"> 
+                        <img src="/img/insta.png" alt="socials" class="my-2"></a>
+                        <a href="https://wa.me//558586964555?text=Vim%20pelo%20site,%20pode%20me%20ajudar?"> 
+                            <img src="/img/wpp.png" alt="socials" class="my-2"></a>
+                    </div>
+
+                    <!--div class="col-12 col-md-4 text-center text-md-right text-light">
+                        <a href="contato.html"
+                            class="text-decoration-none text-light link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Contato pelo site</a><br>
+                        Email: <a href="mailto:urbanmotorsce@gmail.com" class="text-decoration-none text-light">
+                            urbanmotorsce@gmail.com</a><br>
+                        Telefone: <a href="phone:8521396927" class="text-decoration-none text-light"> +55 85
+                            2139-6927</a>
+                    </div-->
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function share() {
+            if (navigator.share !== undefined) {
+                navigator.share({
+                    title: 'Hynudai Creta',
+                    text: 'Confira esse carro',
+                    url: 'https://urbanmotorsbr.com.br/creta.html',
+                })
+                    .then(() => console.log('Successful share'))
+                    .catch((error) => console.log('Error sharing', error));
+            }
+        }
+        </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Inicialize o Slick Carousel
+            $(".slider").slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 4, // Altere conforme desejado
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            // Restante do código...
+        });
+    </script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var currentImageIndex;
+
+        // Função para abrir o modal com a imagem em tamanho real
+        function openModal(imgPath, index) {
+            var modal = document.getElementById('myModal');
+            var modalImg = document.getElementById('modal-img');
+
+            modal.style.display = 'flex';
+            modalImg.src = imgPath;
+            currentImageIndex = index;
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+
+        // Função para alterar a imagem no modal
+        function changeImage(step) {
+            var modalImg = document.getElementById('modal-img');
+            var galleryImages = document.querySelectorAll('.gallery img');
+
+            currentImageIndex += step;
+
+            if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            }
+
+            modalImg.src = galleryImages[currentImageIndex].src;
+        }
+    </script>
+
+</body>
+
+</html>
